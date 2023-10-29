@@ -1,4 +1,4 @@
 /* вывод 10 фамилий членов клуба, 
 упорядоченных по алфавиту без повторов*/
-SELECT DISTINCT surname FROM cd.members 
-ORDER BY surname LIMIT 10;
+USE cd;
+SELECT DISTINCT surname FROM members WHERE surname != 'Guest' ORDER BY surname LIMIT 10;
