@@ -1,4 +1,6 @@
-/*вывод всех членов клуба, зарегистрированных 
+/* вывод всех членов клуба, зарегистрированных 
 с сентября 2012 года.*/
-SELECT * FROM cd.bookings
-WHERE starttime LIKE '%2012-09%';
+USE cd;
+
+SELECT memid, surname, firstname FROM members 
+WHERE EXTRACT(MONTH FROM joindate) >= 9 AND EXTRACT(YEAR FROM joindate) >= 2012;
