@@ -2,7 +2,7 @@
 отсортировав их по имени и фамилии.*/
 USE cd;
 SELECT * FROM members;
-SELECT DISTINCT m.memid, m.surname, m.firstname, m.recommendedby FROM members AS m 
-JOIN members AS m2 ON m.memid = m2.recommendedby OR m2.recommendedby != 'null';
-SELECT DISTINCT memid, surname, firstname, recommendedby FROM members 
-WHERE memid!= 0 ORDER BY surname, firstname;
+SELECT DISTINCT m1.memid, m1.surname, m1.firstname, m1.recommendedby, m2.surname, m2.firstname 
+  FROM members AS m1 
+    LEFT JOIN members AS m2 ON m2.memid = m1.recommendedby OR m2.recommendedby != 'null';
+  WHERE m1.memid!= 0 ORDER BY m1.surname, m1.firstname;
