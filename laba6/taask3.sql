@@ -2,4 +2,4 @@
 USE cd;
 SELECT monthname(starttime) as месяц, round(count(slots)/(SELECT count(*) FROM bookings)*100, 2) AS 'Использование объекта, %' 
 FROM bookings
-GROUP BY месяц ORDER BY 2;
+GROUP BY месяц;
