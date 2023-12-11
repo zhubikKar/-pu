@@ -9,7 +9,7 @@ USE cd;
 SELECT 	IFNULL(table1.facid, 'Total') AS facid, IFNULL(table1.Month, 'Total') AS Month, SUM(table1.slots) AS 'Количество броней' 
 FROM (SELECT f.facid AS facid, MONTH(b.starttime) AS month, SUM(b.slots) AS slots
 FROM facilities AS f
-INNER JOIN bookings book ON f.facid = b.facid
+INNER JOIN bookings AS b ON f.facid = b.facid
 WHERE YEAR(b.starttime) = 2012 
 GROUP BY facid, Month, slots) AS table1
 GROUP BY facid, Month WITH ROLLUP;
