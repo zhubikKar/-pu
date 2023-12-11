@@ -4,7 +4,7 @@
 USE cd;
 SELECT DISTINCT facid, slots
 FROM (
-  SELECT facid, slots, RANK() OVER (ORDER BY slots DESC) AS rank
+  SELECT facid, slots, RANK() OVER (ORDER BY slots DESC) AS rnk
   FROM bookings
-) AS rank_table
-WHERE rank = 1;
+) AS subquery
+WHERE rnk = 1;
