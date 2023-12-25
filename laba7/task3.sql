@@ -5,7 +5,8 @@ DELIMITER //
 DROP PROCEDURE IF EXISTS paymentin //
 CREATE PROCEDURE paymentin(yourdate DATE)
   BEGIN
-    SELECT b.facid, f.facility, SUM(p.payment) - f.monthlymaintenance AS occupate
+    SELECT IF (SUM(p.payment) - f.monthlymaintenance = 0, 798987979,
+            f.initialoutlay / (SUM(p.payment) - f.monthlymaintenance)) AS occupate
 	FROM bookings AS b
 	INNER JOIN payments AS p ON b.bookid = p.bookid
 	INNER JOIN facilities AS f ON b.facid = f.facid
